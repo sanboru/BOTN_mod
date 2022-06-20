@@ -1,0 +1,226 @@
+﻿###########################
+# Japanese Events
+###########################
+
+add_namespace = wotn_japan
+
+#連合国との和平
+country_event = {
+	id = wotn_japan.8
+	title = wotn_japan.8.t
+	desc = wotn_japan.8.d
+	picture = GFX_report_event_hawaii_US
+	available = {
+		has_full_control_of_state = 629
+	}
+
+	option = {
+		name = wotn_japan.8.a
+		white_peace = {
+		target = {all_enemy_country = { JAP } }
+
+		629 = { set_state_owner = JAP }
+		630 = { set_state_owner = JAP }
+		631 = { set_state_owner = JAP }
+		632 = { set_state_owner = JAP }		
+		633 = { set_state_owner = JAP }		
+		634 = { set_state_owner = JAP }		
+		635 = { set_state_owner = JAP }		
+		636 = { set_state_owner = JAP }
+		638 = { set_state_owner = JAP }
+		639 = { set_state_owner = JAP }
+		641 = { set_state_owner = JAP }
+		642 = { set_state_owner = JAP }
+		643 = { set_state_owner = JAP }
+		646 = { set_state_owner = JAP }
+		647 = { set_state_owner = JAP }
+		684 = { set_state_owner = JAP }
+		725 = { set_state_owner = JAP }
+		726 = { set_state_owner = JAP }
+		727 = { set_state_owner = JAP }
+		733 = { set_state_owner = JAP }
+		734 = { set_state_owner = JAP }
+		}
+	}
+}
+#真珠湾攻撃
+country_event = {
+	id = wotn_japan.1
+	title = wotn_japan.1.t
+	desc = wotn_japan.1.d
+	picture = GFX_report_event_pearl_attack_chuse
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = JAP
+		has_war_with = USA
+	}
+	mean_time_to_happen = {
+		days=1
+	}
+	
+	option = { #真珠湾攻撃!
+		name = wotn_japan.1.a
+		random_list = {
+			75 = {
+			JAP = { country_event = { id = wotn_japan.2 days = 2 } }
+			}
+			20 = {
+			JAP = { country_event = { id = wotn_japan.3 days = 2 } }
+			}
+			5 = {
+			JAP = { country_event = { id = wotn_japan.4 days = 2 } } 
+			}
+		}
+	}
+	option = { #真珠湾中止!
+		name = wotn_japan.1.b
+		navy_experience = 200
+	}
+}
+
+#真珠湾攻撃成功!
+country_event = {
+	id = wotn_japan.2
+	title = wotn_japan.2.t
+	desc = wotn_japan.2.d
+	picture = GFX_report_event_pearl_attacked
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days=3
+	}
+	
+	option = {
+		name = wotn_japan.2.a
+		hidden_effect = { USA = { country_event = { id = wotn_japan.5 days = 2 } } }
+		add_manpower = 100000
+		add_war_support = 0.9
+		add_stability = 0.5
+		navy_experience = 50
+		air_experience = 20
+	}
+}
+
+#真珠湾攻撃失敗!
+country_event = {
+	id = wotn_japan.3
+	title = wotn_japan.3.t
+	desc = wotn_japan.3.d
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days=3
+	}
+	
+	option = {
+		name = wotn_japan.3.a
+		add_war_support = -20
+		add_national_unity = -0.2
+	}
+}
+
+#真珠湾攻撃大成功!
+country_event = {
+	id = wotn_japan.4
+	title = wotn_japan.4.t
+	desc = wotn_japan.4.d
+	picture = GFX_report_event_pearl_attacked
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days=3
+	}
+	
+	option = {
+		name = wotn_japan.4.a
+		hidden_effect = { USA = { country_event = { id = wotn_japan.7 days = 2 } } }
+		add_manpower = 1000000
+		add_war_support = 1
+		add_stability = 0.8
+		navy_experience = 500
+		army_experience = 500
+		air_experience = 400
+		629 = { 
+			damage_building = { type = infrastructure damage = 9.0 }
+			damage_building = { type = air_base damage = 9.0 }
+			damage_building = { type = naval_base damage = 10.0 province = 4180 }
+		}
+	}
+}
+
+#リメンバー！パールハーバー！
+country_event = {
+	id = wotn_japan.5
+	title = wotn_japan.5.t
+	desc = wotn_japan.5.d
+	picture = GFX_report_event_pearl_attacked
+	
+	fire_only_once = yes
+	
+	
+	option = {
+		name = wotn_japan.5.a
+		add_manpower = 1000
+		add_war_support = 0.5
+		add_stability = -0.5
+		navy_experience = -50
+		army_experience = -50
+		air_experience = -50
+		629 = { 
+			damage_building = { type = infrastructure damage = 5.0 }
+			damage_building = { type = air_base damage = 5.0 }
+			damage_building = { type = naval_base damage = 5.0 province = 4180 }
+		}
+	}
+}
+
+#敵の失敗
+country_event = {
+	id = wotn_japan.6
+	title = wotn_japan.6.t
+	desc = wotn_japan.6.d
+	
+	fire_only_once = yes
+	
+	
+	option = {
+		name = wotn_japan.6.a
+		add_war_support = 0.8
+		629 = {
+			damage_building = { type = infrastructure damage = 0.1 }
+			damage_building = { type = air_base damage = 0.1 }
+			damage_building = { type = naval_base damage = 0.2 province = 4180 }
+		}
+	}
+}
+
+#リメンバー！パールハーバー2！
+country_event = {
+	id = wotn_japan.7
+	title = wotn_japan.5.t
+	desc = wotn_japan.5.d
+	picture = GFX_report_event_pearl_attack
+	
+	fire_only_once = yes
+	
+	
+	option = {
+		name = wotn_japan.7.a
+		add_manpower = 10000
+		add_war_support = 1.0
+		add_stability = -0.7
+		navy_experience = 10
+		army_experience = 10
+		air_experience = 10
+		629 = { 
+			damage_building = { type = infrastructure damage = 8.0 }
+			damage_building = { type = air_base damage = 9.0 }
+			damage_building = { type = naval_base damage = 8.0 province = 4180 }
+		}
+	}
+}
